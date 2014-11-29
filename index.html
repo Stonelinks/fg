@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width" name="viewport">
+
+  <title>fg</title>
+  <link href="http://fonts.googleapis.com/css?family=PT+Sans:400italic,400,700" rel="stylesheet">
+  <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <link href="example.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="landing">
+  <a href="/" class="brand">Friend Graphs</a>
+  <div class="tagline-bar">an experiment by <a href="http://stonelinks.github.io/" target="_blank">Lucas Doyle</a> and Dan Moffitt</div>
+</div>
+
+<div id="wrapper">
+  <div id="page-content-wrapper">
+    <div id="text-anchor">
+    </div>
+  </div>
+</div>
+
+<script id="text-template" type="text/html">
+  <h1>
+    <%= text %>
+  </h1>
+</script>
+
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/underscore/underscore.js"></script>
+<script src="bower_components/backbone/backbone.js"></script>
+<script src="bower_components/marionette/lib/backbone.marionette.min.js"></script>
+
+<script src="main.js"></script>
+
+</body>
+</html>

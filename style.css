@@ -29,11 +29,6 @@ body {
   text-shadow: 0px 0px 25px #fff;
 }
 
-.brand > img {
-  height: 80px;
-  margin-top: -16px;
-}
-
 .tagline-bar {
   display: inherit;
   text-align: center;
@@ -47,31 +42,29 @@ body {
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-#page-content-wrapper {
+#page-wrapper {
   overflow: hidden;
-}
-
-#wrapper {
-
-  padding-left: 0;
-
-  -webkit-transition: all 0.5s ease;
-  -moz-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-}
-
-#page-content-wrapper {
   width: 100%;
 }
 
-.navbar {
-  margin: 0;
+#title-anchor {
+  text-align: center;
 }
 
-#renderer-anchor {
-  margin: 0;
-  padding: 0;
-  height: 89vh;
-  border: none;
+#title-anchor input {
+  width: 100%;
+  text-align: center;
+}
+
+
+#title-anchor div .edit {
+  display: none;
+}
+
+#title-anchor div.editing .edit {
+  display: block;
+}
+
+#title-anchor div.editing .view {
+  display: none;
 }

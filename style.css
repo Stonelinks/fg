@@ -56,7 +56,6 @@ body {
   text-align: center;
 }
 
-
 #title-anchor div .edit {
   display: none;
 }
@@ -67,4 +66,45 @@ body {
 
 #title-anchor div.editing .view {
   display: none;
+}
+
+#graph-root {
+  text-align: center;
+}
+
+/* svg stuff */
+
+path.link {
+  fill: none;
+  stroke: #666;
+  stroke-width: 1.5px;
+}
+
+marker#licensing {
+  fill: green;
+}
+
+path.link.licensing {
+  stroke: green;
+}
+
+path.link.resolved {
+  stroke-dasharray: 0,2 1;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
+}
+
+text {
+  font: 10px sans-serif;
+  pointer-events: none;
+}
+
+text.shadow {
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-opacity: .8;
 }

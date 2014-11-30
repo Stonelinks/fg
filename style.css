@@ -72,6 +72,21 @@ body {
   text-align: center;
 }
 
+#controls-anchor {
+  text-align: center;
+}
+
+#controls-anchor form, 
+#controls-anchor .add-new-type,
+#controls-anchor .add-new-relationship {
+  margin-top: 5px;
+}
+
+#controls-anchor .remove-target,
+#controls-anchor .remove-type {
+  margin-left: 5px;
+}
+
 /* svg stuff */
 
 path.link {

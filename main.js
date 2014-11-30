@@ -19,7 +19,8 @@ $(document).ready(function() {
               {source: 'Microsoft', target: 'Amazon', type: 'suit'},
               {source: 'Samsung', target: 'Apple', type: 'suit'},
               {source: 'Microsoft', target: 'Amazon', type: 'resolved'},
-              {source: 'Microsoft', target: 'Apple', type: 'resolved'}]
+              {source: 'Microsoft', target: 'Apple', type: 'resolved'}],
+      types: ['suit', 'licensing', 'resolved']
     },
 
     initialize: function() {
@@ -116,7 +117,7 @@ $(document).ready(function() {
           }
         }
       });
-links;
+
       // any links with duplicate source and target get an incremented 'linknum'
       for (var i = 0; i < links.length; i++) {
         if (i != 0 &&
@@ -142,7 +143,7 @@ links;
       });
 
       var w = 800,
-          h = 600;
+          h = 400;
 
       var force = d3.layout.force()
           .nodes(d3.values(nodes))
@@ -157,25 +158,29 @@ links;
           .attr('width', w)
           .attr('height', h);
 
-      // Per-type markers, as they don't inherit styles.
-      svg.append('svg:defs').selectAll('marker')
-          .data(['suit', 'licensing', 'resolved'])
-        .enter().append('svg:marker')
-          .attr('id', String)
-          .attr('viewBox', '0 -5 10 10')
-          .attr('refX', 15)
-          .attr('refY', -1.5)
-          .attr('markerWidth', 6)
-          .attr('markerHeight', 6)
-          .attr('orient', 'auto')
-        .append('svg:path')
-          .attr('d', 'M0,-5L10,0L0,5');
+      // per-type markers, as they don't inherit styles.
+      // svg.append('svg:defs').selectAll('marker')
+          // .data(['suit', 'licensing', 'resolved'])
+        // .enter().append('svg:marker')
+          // .attr('id', String)
+          // .attr('viewBox', '0 -5 10 10')
+          // .attr('refX', 15)
+          // .attr('refY', -1.5)
+          // .attr('markerWidth', 6)
+          // .attr('markerHeight', 6)
+          // .attr('orient', 'auto')
+        // .append('svg:path')
+          // .attr('d', 'M0,-5L10,0L0,5');
 
       var path = svg.append('svg:g').selectAll('path')
           .data(force.links())
         .enter().append('svg:path')
-          .attr('class', function(d) { return 'link ' + d.type; })
-          .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
+          .attr('class', function(d) {
+            return 'link ' + d.type;
+          })
+          .attr('marker-end', function(d) {
+            return 'url(#' + d.type + ')';
+          });
 
       var circle = svg.append('svg:g').selectAll('circle')
           .data(force.nodes())
@@ -187,24 +192,28 @@ links;
           .data(force.nodes())
         .enter().append('svg:g');
 
-      // A copy of the text with a thick white stroke for legibility.
+      // a copy of the text with a thick white stroke for legibility.
       text.append('svg:text')
           .attr('x', 8)
           .attr('y', '.31em')
           .attr('class', 'shadow')
-          .text(function(d) { return d.name; });
+          .text(function(d) {
+            return d.name;
+          });
 
       text.append('svg:text')
           .attr('x', 8)
           .attr('y', '.31em')
-          .text(function(d) { return d.name; });
+          .text(function(d) {
+            return d.name;
+          });
 
-      // Use elliptical arc path segments to doubly-encode directionality.
+      // use elliptical arc path segments to doubly-encode directionality.
       function tick() {
         path.attr('d', function(d) {
           var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y,
-              dr = 75 / d.linknum;  //linknum is defined above
+              dr = 75 / d.linknum;  // linknum is defined above
           return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y;
         });
 
@@ -219,13 +228,28 @@ links;
     },
 
     initialize: function(options) {
-
       this.on('show', function() {
-
         this.update();
-
       });
+    }
+  });
 
+  var ControlsView = Marionette.ItemView.extend({
+
+    template: '#controls-template',
+
+    modelEvents: {
+      'change:links': 'update'
+    },
+
+    update: function() {
+
+    },
+
+    initialize: function(options) {
+      this.on('show', function() {
+        this.update();
+      });
     }
   });
 
@@ -255,6 +279,11 @@ links;
       model: data
     });
     myApp.graphAnchor.show(graphView);
+
+    var controlsView = new ControlsView({
+      model: data
+    });
+    myApp.controlsAnchor.show(controlsView);
 
   });
 

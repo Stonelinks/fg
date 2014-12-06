@@ -239,16 +239,53 @@ $(document).ready(function() {
     template: '#controls-template',
 
     modelEvents: {
-      'change:links': 'update'
+      'change:links change:types': 'render'
     },
 
-    update: function() {
-
+    ui: {
+      addNewRelationship: '.add-new-relationship',
+      addNewType: '.add-new-type',
+      relationshipInput: '.relationship-form input',
+      relationshipSelect: '.relationship-form select',
+      relationshipRemoveButton: '.relationship-form button.remove-relationship',
+      typeInput: '.type-form input',
+      typeSelect: '.type-form select',
+      typeRemoveButton: '.type-form button.remove-type'
     },
+
+    events: {
+      'click @ui.addNewRelationship': 'onAddNewRelationshipClick',
+      'click @ui.addNewType': 'onAddNewTypeClick',
+      'keydown @ui.relationshipInput': 'onRelationshipInputKeypress',
+      'focusout @ui.relationshipInput': 'onRelationshipInputFocusout',
+      'change @ui.relationshipSelect': 'onRelationshipSelectChange',
+      'click @ui.relationshipRemoveButton': 'onRelationshipRemoveButtonClick',
+      'keydown @ui.typeInput': 'onTypeInputKeypress',
+      'focusout @ui.typeInput': 'onTypeInputFocusout',
+      'change @ui.typeSelect': 'onTypeSelectChange',
+      'click @ui.typeRemoveButton': 'onTypeRemoveButtonClick',
+    },
+
+    onAddNewRelationshipClick: function() {
+      
+    },
+    
+    onAddNewTypeClick: function() {
+      
+    },
+    
+    // onRelationshipInputKeypress',
+    // onRelationshipInputFocusout',
+    // onRelationshipSelectChange',
+    // onRelationshipRemoveButtonClick',
+    // onTypeInputKeypress',
+    // onTypeInputFocusout',
+    // onTypeSelectChange',
+    // onTypeRemoveButtonClick',
 
     initialize: function(options) {
       this.on('show', function() {
-        this.update();
+        // this.update();
       });
     }
   });

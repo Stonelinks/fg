@@ -45,17 +45,17 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6">
-        <% _.forEach(links, function(link) { %>
-          <form class="form-inline">
+        <% _.forEach(links, function(link, index) { %>
+          <form class="form-inline relationship-form">
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control source-control" placeholder="Someone" value="<%- link.source %>">
+                <input type="text" class="form-control source-control" placeholder="Someone" value="<%- link.source %>" data-index="<%- index %>">
               </div>
               <div class="input-group">
-                <input type="text" class="form-control target-control" placeholder="someone else" value="<%- link.target %>">
+                <input type="text" class="form-control target-control" placeholder="someone else" value="<%- link.target %>" data-index="<%- index %>">
               </div>
               <div class="input-group">
-                <select class="form-control">
+                <select class="form-control" data-index="<%- index %>">
                   <option>1</option>
                   <option>2</option>
                   <option>3</option>
@@ -64,7 +64,7 @@
                 </select>
               </div>
               <div class="input-group">
-                <button type="button" class="close remove-target">&times;</button>
+                <button type="button" class="close remove-relationship" data-index="<%- index %>">&times;</button>
               </div>
             </div>
           </form>
@@ -74,11 +74,11 @@
         </button>
       </div>
       <div class="col-sm-6">
-        <% _.forEach(types, function(type) { %>
-          <form class="form-inline">
+        <% _.forEach(types, function(type, index) { %>
+          <form class="form-inline type-form">
             <div class="form-group">
               <div class="input-group">
-                <select class="form-control">
+                <select class="form-control" data-index="<%- index %>">
                   <option value="navy">Navy</option>
                   <option value="blue">Blue</option>
                   <option value="aqua">Aqua</option>
@@ -100,11 +100,11 @@
             </div>
             <div class="form-group">
               <div class="input-group">
-                <input type="text" class="form-control type-control" placeholder="Someone" value="<%- type %>">
+                <input type="text" class="form-control type-control" placeholder="Someone" value="<%- type %>" data-index="<%- index %>">
               </div>
             </div>
             <div class="input-group">
-              <button type="button" class="close remove-type">&times;</button>
+              <button type="button" class="close remove-type" data-index="<%- index %>">&times;</button>
             </div>
           </form>
         <% }) %>
